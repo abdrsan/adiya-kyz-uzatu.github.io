@@ -763,93 +763,148 @@ a{text-decoration:none;color:inherit;}
 }
 
 /* ── RSVP FORM SECTION ── */
-.rsvp-form-section{
-  background:var(--bg-alt);padding:80px 0;
-}
-.rsvp-form-content{
-  max-width:600px;margin:0 auto;
-}
+.rsvp-section{background:var(--bg-alt);padding:80px 0;}
+.rsvp-content{max-width:500px;margin:0 auto;}
 .rsvp-card{
   background:var(--surface);border-radius:var(--radius);
   padding:50px 40px;border:1px solid var(--border);
   box-shadow:var(--shadow-md);
 }
-.form-group{
-  margin-bottom:32px;
-}
+.form-group{margin-bottom:28px;}
 .form-group label{
-  display:block;font-family:'Cormorant Garamond',serif;font-size:0.82rem;
-  letter-spacing:0.18em;text-transform:uppercase;color:var(--text-soft);
-  margin-bottom:12px;
+  display:block;font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;letter-spacing:0.08em;color:var(--text);
+  margin-bottom:12px;font-weight:600;
 }
-.form-group input{
-  width:100%;background:var(--bg);border:1px solid rgba(212,180,131,0.3);
-  border-radius:var(--radius-sm);padding:16px 20px;
-  font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);
-  transition:border-color 0.25s,box-shadow 0.25s;outline:none;
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%;padding:14px 18px;
+  border:1px solid var(--border);border-radius:var(--radius-sm);
+  background:var(--bg);color:var(--text);
+  font-family:'Cormorant Garamond',serif;font-size:1rem;
+  transition:all 0.3s ease;
 }
-.form-group input:focus{
-  border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,180,131,0.15);
-  background:var(--surface);
-}
-.form-group input::placeholder{
-  color:var(--text-soft);opacity:0.6;
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+  outline:none;border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(212,180,131,0.1);
 }
 .form-hint{
-  font-family:'Cormorant Garamond',serif;font-size:0.85rem;
-  color:var(--text-soft);margin-top:8px;line-height:1.6;
-  font-style:italic;
+  font-size:0.85rem;color:var(--text-soft);
+  margin-top:8px;line-height:1.5;
 }
-.radio-options{
-  display:grid;grid-template-columns:1fr;gap:16px;
-}
+.radio-group{display:flex;flex-direction:column;gap:12px;}
 .radio-option{
   display:flex;align-items:center;gap:12px;
-  background:var(--bg);border:1.5px solid var(--border);
-  border-radius:var(--radius-sm);padding:20px 24px;
-  cursor:pointer;transition:all 0.25s ease;
+  cursor:pointer;padding:12px 16px;
+  border:1px solid var(--border);border-radius:var(--radius-sm);
+  transition:all 0.3s ease;
 }
-.radio-option input{display:none;}
+.radio-option:hover{border-color:var(--gold);background:var(--bg-alt);}
+.radio-option input[type=radio]{display:none;}
 .radio-circle{
   width:20px;height:20px;border:2px solid var(--border);
-  border-radius:50%;position:relative;flex-shrink:0;
+  border-radius:50%;position:relative;transition:all 0.3s ease;
 }
-.radio-circle::after{
+.radio-option input[type=radio]:checked + .radio-circle{
+  border-color:var(--gold);background:var(--gold);
+}
+.radio-option input[type=radio]:checked + .radio-circle::after{
   content:'';position:absolute;top:50%;left:50%;
-  transform:translate(-50%,-50%);width:8px;height:8px;
-  background:var(--gold);border-radius:50%;opacity:0;transition:opacity 0.2s;
+  transform:translate(-50%,-50%);width:6px;height:6px;
+  background:var(--surface);border-radius:50%;
 }
-.radio-text{
-  font-family:'Cormorant Garamond',serif;font-size:1rem;
-  color:var(--text-mid);line-height:1.4;
+.radio-text{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);}
+.btn-gold{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dark) 100%);
+  color:#1a0f06;border:none;padding:14px 32px;
+  border-radius:var(--radius-sm);font-family:'Cormorant Garamond',serif;
+  font-size:1rem;letter-spacing:0.08em;font-weight:600;
+  cursor:pointer;transition:all 0.3s ease;
+  box-shadow:0 4px 12px rgba(212,180,131,0.3);
 }
-.radio-option:hover{border-color:var(--gold);background:var(--gold-pale);}
-.radio-option:has(input:checked){
-  border-color:var(--gold-dark);background:var(--gold-pale);
+.btn-gold:hover{
+  transform:translateY(-2px);box-shadow:0 6px 20px rgba(212,180,131,0.4);
 }
-.radio-option:has(input:checked) .radio-circle::after{
-  opacity:1;
-}
-.btn-rsvp-submit{
-  width:100%;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dark) 100%);
-  color:#1a0f06;border:none;border-radius:var(--radius-sm);
-  padding:18px 32px;font-family:'Cormorant Garamond',serif;
-  font-size:1.1rem;letter-spacing:0.15em;text-transform:uppercase;
-  font-weight:600;cursor:pointer;transition:all 0.4s ease;
-  display:flex;align-items:center;justify-content:center;gap:12px;
-  box-shadow:0 4px 20px rgba(43,29,14,0.35);
-}
-.btn-rsvp-submit:hover{
-  transform:translateY(-2px);box-shadow:0 8px 30px rgba(43,29,14,0.45);
-}
+.btn-gold:disabled{opacity:0.6;cursor:not-allowed;}
 .spinner{
-  display:none;width:18px;height:18px;border:2px solid rgba(212,180,131,0.3);
-  border-top-color:var(--gold);border-radius:50%;animation:spin 0.8s linear infinite;
+  width:16px;height:16px;border:2px solid transparent;
+  border-top:2px solid currentColor;border-radius:50%;
+  animation:spin 1s linear infinite;display:none;
 }
+.btn-gold:disabled .spinner{display:block;}
 @keyframes spin{to{transform:rotate(360deg);}}
 .form-status{
-  text-align:center;font-family:'Cormorant Garamond',serif;font-size:1rem;
-  min-height:1.4em;font-weight:500;margin-top:16px;
+  margin-top:20px;text-align:center;
+  font-family:'Cormorant Garamond',serif;font-size:0.95rem;
+  color:var(--text-soft);line-height:1.6;
+}
+
+/* ── SURVEY FORM ── */
+.survey-section{background:var(--bg);padding:80px 0;}
+.survey-content{max-width:600px;margin:0 auto;}
+.survey-card{
+  background:var(--surface);border-radius:var(--radius);
+  padding:50px;border:1px solid var(--border);
+  box-shadow:var(--shadow-md);
+}
+.survey-question{
+  margin-bottom:40px;padding-bottom:30px;
+  border-bottom:1px solid var(--border);
+}
+.survey-question:last-child{
+  border-bottom:none;margin-bottom:0;padding-bottom:0;
+}
+.question-title{
+  font-family:'Cormorant Garamond',serif;font-size:1.4rem;
+  color:var(--text);font-weight:600;margin-bottom:8px;
+  letter-spacing:0.05em;
+}
+.question-subtitle{
+  font-family:'Cormorant Garamond',serif;font-size:1rem;
+  color:var(--text-soft);margin-bottom:24px;
+  font-style:italic;
+}
+.checkbox-group{
+  display:grid;grid-template-columns:1fr 1fr;gap:16px;
+}
+.checkbox-option{
+  display:flex;align-items:center;gap:12px;
+  cursor:pointer;padding:16px;
+  border:1px solid var(--border);border-radius:var(--radius-sm);
+  transition:all 0.3s ease;background:var(--bg);
+}
+.checkbox-option:hover{
+  border-color:var(--gold);background:var(--bg-alt);
+  transform:translateY(-2px);
+}
+.checkbox-option input[type=checkbox]{display:none;}
+.checkbox-box{
+  width:20px;height:20px;border:2px solid var(--border);
+  border-radius:4px;position:relative;transition:all 0.3s ease;
+  flex-shrink:0;
+}
+.checkbox-option input[type=checkbox]:checked + .checkbox-box{
+  border-color:var(--gold);background:var(--gold);
+}
+.checkbox-option input[type=checkbox]:checked + .checkbox-box::after{
+  content:'✓';position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);color:#1a0f06;
+  font-size:12px;font-weight:bold;
+}
+.checkbox-text{
+  font-family:'Cormorant Garamond',serif;font-size:0.95rem;
+  color:var(--text);line-height:1.4;
+}
+.survey-question textarea{
+  min-height:120px;resize:vertical;
+}
+@media(max-width:768px){
+  .checkbox-group{grid-template-columns:1fr;}
+  .survey-card{padding:30px 20px;}
 }
 
 /* ── SECTIONS ── */
@@ -1504,58 +1559,6 @@ a{text-decoration:none;color:inherit;}
           2GIS картасында ашу
         </a>
       </div>
-    </div>
-  </div>
-</section>
--->
-
-<!-- RSVP FORM -->
-<section class="section rsvp-form-section">
-  <div class="container">
-    <div class="section-label fade-in">Растау</div>
-    <h2 class="section-title fade-in" style="--d:0.1s">Тойға келетінізді растауыңызды сұраймыз</h2>
-    <div class="rsvp-form-content fade-in" style="--d:0.2s">
-      <div class="rsvp-card">
-        <form id="rsvpForm">
-          <div class="form-group">
-            <label for="rsvpName">Аты — жөніңіз</label>
-            <input type="text" id="rsvpName" name="name" placeholder="Аты — жөніңіз" required/>
-            <p class="form-hint">Жұбайыңызбен келетін болсаңыз, екі есімді де көрсетіңіз</p>
-          </div>
-          
-          <div class="form-group">
-            <label>Қатысуыңыз</label>
-            <div class="radio-options">
-              <label class="radio-option">
-                <input type="radio" name="attendance" value="yes" required/>
-                <span class="radio-circle"></span>
-                <span class="radio-text">Әрине, келемін</span>
-              </label>
-              <label class="radio-option">
-                <input type="radio" name="attendance" value="with_spouse"/>
-                <span class="radio-circle"></span>
-                <span class="radio-text">Жұбайыммен келемін</span>
-              </label>
-              <label class="radio-option">
-                <input type="radio" name="attendance" value="no"/>
-                <span class="radio-circle"></span>
-                <span class="radio-text">Өкінішке орай, келе алмаймын</span>
-              </label>
-            </div>
-          </div>
-          
-          <button type="submit" class="btn-rsvp-submit">
-            <span id="submitText">ЖІБЕРУ</span>
-            <div class="spinner" id="submitSpinner"></div>
-          </button>
-          
-          <p class="form-status" id="formStatus"></p>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- PROGRAM -->
 <section class="section program-section" id="program">
   <div class="container">
@@ -1715,6 +1718,55 @@ document.addEventListener('DOMContentLoaded',function(){
       formStatus.textContent='Рақмет! Жауабыңыз қабылданды. ✓';
       formStatus.style.color='#16a34a';
       rsvpForm.reset();
+      submitText.style.display='inline';spinner.style.display='none';btn.disabled=false;
+    });
+  }
+
+  // Survey Form Handler
+  const surveyForm=document.getElementById('surveyForm');
+  const surveyStatus=document.getElementById('surveyStatus');
+  if(surveyForm){
+    surveyForm.addEventListener('submit',async function(e){
+      e.preventDefault();
+      const submitText=document.getElementById('surveySubmitText');
+      const spinner=document.getElementById('surveySpinner');
+      const btn=surveyForm.querySelector('button[type="submit"]');
+      submitText.style.display='none';spinner.style.display='block';btn.disabled=true;
+      
+      // Collect form data
+      const formData=new FormData(surveyForm);
+      const data={};
+      
+      // Handle checkboxes
+      const foodPreferences=[];
+      document.querySelectorAll('input[name="food"]:checked').forEach(cb=>{
+        foodPreferences.push(cb.value);
+      });
+      data.food=foodPreferences;
+      
+      // Handle radio buttons
+      const musicPreference=document.querySelector('input[name="music"]:checked');
+      data.music=musicPreference?musicPreference.value:'';
+      
+      const transportPreference=document.querySelector('input[name="transport"]:checked');
+      data.transport=transportPreference?transportPreference.value:'';
+      
+      // Handle checkboxes for entertainment
+      const entertainmentPreferences=[];
+      document.querySelectorAll('input[name="entertainment"]:checked').forEach(cb=>{
+        entertainmentPreferences.push(cb.value);
+      });
+      data.entertainment=entertainmentPreferences;
+      
+      // Handle textarea
+      const specialRequests=document.getElementById('specialRequests');
+      data.requests=specialRequests?specialRequests.value:'';
+      
+      // Simulate submission
+      await new Promise(r=>setTimeout(r,1500));
+      surveyStatus.textContent='Рақмет! Сұрағыңыз қабылданды. ✓';
+      surveyStatus.style.color='#16a34a';
+      surveyForm.reset();
       submitText.style.display='inline';spinner.style.display='none';btn.disabled=false;
     });
   }
