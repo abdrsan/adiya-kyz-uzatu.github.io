@@ -547,18 +547,18 @@ a{text-decoration:none;color:inherit;}
 .cal-empty{visibility:hidden;cursor:default;}
 .cal-highlight{
   background:transparent !important;
-  color:#000 !important;
+  color:transparent !important;
   font-weight:700;position:relative;z-index:2;
 }
 .cal-highlight::before{
   content:'\f004';
   font-family: 'Font Awesome 6 Free';
-  font-weight: 400; /* Regular вес для тонкого контура */
+  font-weight: 300; /* Тонкая линия */
   position:absolute;top:50%;left:50%;
-  transform:translate(-50%,-50%) scale(3);
+  transform:translate(-50%,-50%) scale(3.5);
   font-size:1rem;
-  color:#000; /* Черный цвет линии */
-  opacity:1; /* Полная видимость линии */
+  color:#000;
+  opacity:1;
   z-index:-1;
   animation:heartbeat 1.5s ease-in-out infinite;
 }
@@ -569,8 +569,8 @@ a{text-decoration:none;color:inherit;}
   color:#000;z-index:1;
 }
 @keyframes heartbeat{
-  0%,100%{transform:translate(-50%,-50%) scale(3);opacity:1;}
-  50%{transform:translate(-50%,-50%) scale(3.3);opacity:0.8;}
+  0%,100%{transform:translate(-50%,-50%) scale(3.5);opacity:1;}
+  50%{transform:translate(-50%,-50%) scale(3.8);opacity:0.7;}
 }
 @keyframes pulse{
   0%,100%{transform:scale(1);opacity:0.3;}

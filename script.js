@@ -56,39 +56,26 @@ function initMusicPlayer() {
     return;
   }
 
-  // Set initial state
+  // Изначально выключено
   audio.muted = false;
-
-  function playAudio() {
-    audio.play().then(() => {
-      musicIconOff.style.display = 'none';
-      musicIconOn.style.display = 'block';
-    }).catch(err => {
-      console.warn("Autoplay prevented:", err);
-    });
-  }
+  audio.pause();
+  musicIconOff.style.display = 'block';
+  musicIconOn.style.display = 'none';
 
   toggleBtn.addEventListener('click', function() {
     if (audio.paused) {
-      playAudio();
+      audio.play().then(() => {
+        musicIconOff.style.display = 'none';
+        musicIconOn.style.display = 'block';
+      }).catch(err => {
+        console.error("Play failed:", err);
+      });
     } else {
       audio.pause();
       musicIconOff.style.display = 'block';
       musicIconOn.style.display = 'none';
     }
   });
-
-  // Try to play on first user interaction
-  const unlockAudio = () => {
-    if (audio.paused) {
-      playAudio();
-    }
-    document.removeEventListener('click', unlockAudio);
-    document.removeEventListener('touchstart', unlockAudio);
-  };
-
-  document.addEventListener('click', unlockAudio);
-  document.addEventListener('touchstart', unlockAudio);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
