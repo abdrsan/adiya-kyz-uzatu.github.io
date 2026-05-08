@@ -50,25 +50,27 @@ function initMusicPlayer() {
   const toggleBtn = document.getElementById('musicToggle');
   const musicIconOff = document.getElementById('musicIconOff');
   const musicIconOn = document.getElementById('musicIconOn');
-  if (!audio || !toggleBtn) return;
+  
+  if (!audio || !toggleBtn) {
+    console.error("Audio element or toggle button not found");
+    return;
+  }
 
-  function attemptAutoplay() {
+  // Set initial state
+  audio.muted = false;
+
+  function playAudio() {
     audio.play().then(() => {
-      audio.muted = false;
       musicIconOff.style.display = 'none';
       musicIconOn.style.display = 'block';
-    }).catch(() => {
-      musicIconOff.style.display = 'block';
-      musicIconOn.style.display = 'none';
+    }).catch(err => {
+      console.warn("Autoplay prevented:", err);
     });
   }
 
   toggleBtn.addEventListener('click', function() {
     if (audio.paused) {
-      audio.play();
-      audio.muted = false;
-      musicIconOff.style.display = 'none';
-      musicIconOn.style.display = 'block';
+      playAudio();
     } else {
       audio.pause();
       musicIconOff.style.display = 'block';
@@ -76,8 +78,17 @@ function initMusicPlayer() {
     }
   });
 
-  document.addEventListener('click', attemptAutoplay, { once: true });
-  document.addEventListener('touchstart', attemptAutoplay, { once: true });
+  // Try to play on first user interaction
+  const unlockAudio = () => {
+    if (audio.paused) {
+      playAudio();
+    }
+    document.removeEventListener('click', unlockAudio);
+    document.removeEventListener('touchstart', unlockAudio);
+  };
+
+  document.addEventListener('click', unlockAudio);
+  document.addEventListener('touchstart', unlockAudio);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
