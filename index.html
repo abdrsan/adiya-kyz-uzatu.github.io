@@ -762,149 +762,10 @@ a{text-decoration:none;color:inherit;}
   color:var(--text-mid);line-height:1.6;font-style:italic;
 }
 
-/* ── RSVP FORM SECTION ── */
-.rsvp-section{background:var(--bg-alt);padding:80px 0;}
-.rsvp-content{max-width:500px;margin:0 auto;}
-.rsvp-card{
-  background:var(--surface);border-radius:var(--radius);
-  padding:50px 40px;border:1px solid var(--border);
-  box-shadow:var(--shadow-md);
-}
-.form-group{margin-bottom:28px;}
-.form-group label{
-  display:block;font-family:'Cormorant Garamond',serif;
-  font-size:1.1rem;letter-spacing:0.08em;color:var(--text);
-  margin-bottom:12px;font-weight:600;
-}
-.form-group input,
-.form-group select,
-.form-group textarea{
-  width:100%;padding:14px 18px;
-  border:1px solid var(--border);border-radius:var(--radius-sm);
-  background:var(--bg);color:var(--text);
-  font-family:'Cormorant Garamond',serif;font-size:1rem;
-  transition:all 0.3s ease;
-}
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus{
-  outline:none;border-color:var(--gold);
-  box-shadow:0 0 0 3px rgba(212,180,131,0.1);
-}
-.form-hint{
-  font-size:0.85rem;color:var(--text-soft);
-  margin-top:8px;line-height:1.5;
-}
-.radio-group{display:flex;flex-direction:column;gap:12px;}
-.radio-option{
-  display:flex;align-items:center;gap:12px;
-  cursor:pointer;padding:12px 16px;
-  border:1px solid var(--border);border-radius:var(--radius-sm);
-  transition:all 0.3s ease;
-}
-.radio-option:hover{border-color:var(--gold);background:var(--bg-alt);}
-.radio-option input[type=radio]{display:none;}
-.radio-circle{
-  width:20px;height:20px;border:2px solid var(--border);
-  border-radius:50%;position:relative;transition:all 0.3s ease;
-}
-.radio-option input[type=radio]:checked + .radio-circle{
-  border-color:var(--gold);background:var(--gold);
-}
-.radio-option input[type=radio]:checked + .radio-circle::after{
-  content:'';position:absolute;top:50%;left:50%;
-  transform:translate(-50%,-50%);width:6px;height:6px;
-  background:var(--surface);border-radius:50%;
-}
-.radio-text{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);}
-.btn-gold{
-  display:inline-flex;align-items:center;gap:10px;
-  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dark) 100%);
-  color:#1a0f06;border:none;padding:14px 32px;
-  border-radius:var(--radius-sm);font-family:'Cormorant Garamond',serif;
-  font-size:1rem;letter-spacing:0.08em;font-weight:600;
-  cursor:pointer;transition:all 0.3s ease;
-  box-shadow:0 4px 12px rgba(212,180,131,0.3);
-}
-.btn-gold:hover{
-  transform:translateY(-2px);box-shadow:0 6px 20px rgba(212,180,131,0.4);
-}
-.btn-gold:disabled{opacity:0.6;cursor:not-allowed;}
-.spinner{
-  width:16px;height:16px;border:2px solid transparent;
-  border-top:2px solid currentColor;border-radius:50%;
-  animation:spin 1s linear infinite;display:none;
-}
-.btn-gold:disabled .spinner{display:block;}
 @keyframes spin{to{transform:rotate(360deg);}}
 .form-status{
-  margin-top:20px;text-align:center;
-  font-family:'Cormorant Garamond',serif;font-size:0.95rem;
-  color:var(--text-soft);line-height:1.6;
-}
-
-/* ── SURVEY FORM ── */
-.survey-section{background:var(--bg);padding:80px 0;}
-.survey-content{max-width:600px;margin:0 auto;}
-.survey-card{
-  background:var(--surface);border-radius:var(--radius);
-  padding:50px;border:1px solid var(--border);
-  box-shadow:var(--shadow-md);
-}
-.survey-question{
-  margin-bottom:40px;padding-bottom:30px;
-  border-bottom:1px solid var(--border);
-}
-.survey-question:last-child{
-  border-bottom:none;margin-bottom:0;padding-bottom:0;
-}
-.question-title{
-  font-family:'Cormorant Garamond',serif;font-size:1.4rem;
-  color:var(--text);font-weight:600;margin-bottom:8px;
-  letter-spacing:0.05em;
-}
-.question-subtitle{
-  font-family:'Cormorant Garamond',serif;font-size:1rem;
-  color:var(--text-soft);margin-bottom:24px;
-  font-style:italic;
-}
-.checkbox-group{
-  display:grid;grid-template-columns:1fr 1fr;gap:16px;
-}
-.checkbox-option{
-  display:flex;align-items:center;gap:12px;
-  cursor:pointer;padding:16px;
-  border:1px solid var(--border);border-radius:var(--radius-sm);
-  transition:all 0.3s ease;background:var(--bg);
-}
-.checkbox-option:hover{
-  border-color:var(--gold);background:var(--bg-alt);
-  transform:translateY(-2px);
-}
-.checkbox-option input[type=checkbox]{display:none;}
-.checkbox-box{
-  width:20px;height:20px;border:2px solid var(--border);
-  border-radius:4px;position:relative;transition:all 0.3s ease;
-  flex-shrink:0;
-}
-.checkbox-option input[type=checkbox]:checked + .checkbox-box{
-  border-color:var(--gold);background:var(--gold);
-}
-.checkbox-option input[type=checkbox]:checked + .checkbox-box::after{
-  content:'✓';position:absolute;top:50%;left:50%;
-  transform:translate(-50%,-50%);color:#1a0f06;
-  font-size:12px;font-weight:bold;
-}
-.checkbox-text{
-  font-family:'Cormorant Garamond',serif;font-size:0.95rem;
-  color:var(--text);line-height:1.4;
-}
-.survey-question textarea{
-  min-height:120px;resize:vertical;
-}
-@media(max-width:768px){
-  .checkbox-group{grid-template-columns:1fr;}
-  .survey-card{padding:30px 20px;}
+  text-align:center;font-family:'Cormorant Garamond',serif;font-size:1rem;
+  min-height:1.4em;font-weight:500;margin-top:16px;
 }
 
 /* ── SECTIONS ── */
@@ -1227,7 +1088,7 @@ a{text-decoration:none;color:inherit;}
 
 <!-- BACKGROUND MUSIC -->
 <audio id="backgroundMusic" loop>
-  <source src="assets/music/videoplayback.mp4" type="audio/mp4">
+  <source src="assets/music/Дос-Мукасан — Той жыры.  1972 год.mp3" type="audio/mpeg">
 </audio>
 
 <!-- MUSIC BTN -->
@@ -1480,6 +1341,175 @@ a{text-decoration:none;color:inherit;}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
           2GIS арқылы ашу
         </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VENUE INFO
+<section class="section venue-info-section">
+  <div class="container">
+    <div class="section-label fade-in">Мекен-жайымыз</div>
+    <h2 class="section-title fade-in" style="--d:0.1s">Той өтетін орын</h2>
+    <div class="venue-content fade-in" style="--d:0.2s">
+      <div class="venue-card">
+        <div class="venue-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#d4b483" stroke-width="1.5">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+            <circle cx="12" cy="9" r="2.5"/>
+          </svg>
+        </div>
+        <h3>«Amina Palace» мейрамханасы</h3>
+        <p class="venue-address">Астана қаласы, Қазақстан</p>
+        <div class="venue-details">
+          <div class="venue-detail-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span>15 тамыз 2026 жыл, сенбі</span>
+          </div>
+          <div class="venue-detail-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <span>15:00 — 23:00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+-->
+
+<!-- MAP INSTRUCTIONS 
+<section class="section map-instructions-section">
+  <div class="container">
+    <div class="section-label fade-in">Көмек</div>
+    <h2 class="section-title fade-in" style="--d:0.1s">Картаны қолдану</h2>
+    <div class="instructions-content fade-in" style="--d:0.2s">
+      <div class="instructions-card">
+        <p>Той өтетін орынға оңай жету үшін төмендегі картаны пайдаланыңыз. 2GIS картасында «Amina Palace» мейрамханасын іздеуіңізге болады.</p>
+        
+        <div class="map-steps">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <p>Төмендегі сілтемені басыңыз</p>
+          </div>
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <p>2GIS картасында «Amina Palace» іздеңіз</p>
+          </div>
+          <div class="step-item">
+            <div class="step-number">3</div>
+            <p>Маршрутты жоспарыңыз және жетуіңіз</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+-->
+<!-- MAP BUTTON 
+<section class="section map-button-section">
+  <div class="container">
+    <div class="map-button-content fade-in">
+      <div class="map-button-card">
+        <h3>Картада ашу</h3>
+        <p>2GIS картасында «Amina Palace» мейрамханасын ашыңыз</p>
+        <a href="https://2gis.kz/astana" target="_blank" rel="noopener" class="btn-map-2gis">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+            <circle cx="12" cy="9" r="2.5"/>
+          </svg>
+          2GIS картасында ашу
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+-->
+
+<!-- RSVP FORM -->
+<section class="section rsvp-form-section">
+  <div class="container">
+    <div class="rsvp-form-content fade-in">
+      <div class="rsvp-card">
+        <h2 class="rsvp-title">ТОЙҒА ҚАТЫСУЫҢЫЗДЫ РАСТАУЫҢЫЗДЫ СҰРАЙМЫЗ!</h2>
+        <form id="rsvpForm">
+          <div class="form-group">
+            <label>АТЫ-ЖӨНІҢІЗ (ЖҰБЫҢЫЗБЕН КЕЛЕТІН БОЛСАҢЫЗ, ЕСІМДЕРІҢІЗДІ БІРГЕ ЖАЗУЫҢЫЗДЫ ӨТІНЕМІЗ)</label>
+            <input type="text" id="rsvpName" name="name" placeholder="ЕСІМІҢІЗ" required/>
+          </div>
+          
+          <div class="radio-options">
+            <label class="radio-option">
+              <input type="radio" name="attendance" value="yes" required/>
+              <span class="radio-circle"></span>
+              <span class="radio-text">КЕЛЕМІН</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="attendance" value="with_spouse"/>
+              <span class="radio-circle"></span>
+              <span class="radio-text">ЖҰБЫММЕН КЕЛЕМІН</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="attendance" value="no"/>
+              <span class="radio-circle"></span>
+              <span class="radio-text">ӨКІНІШКЕ ОРАЙ, ҚАТЫСА АЛМАЙМЫН</span>
+            </label>
+          </div>
+
+          <div class="guest-counter-section">
+            <p class="guest-counter-label">ТОЙҒА НЕШЕ АДАМ КЕЛЕСІЗДЕР</p>
+            <div class="guest-counter-wrap">
+              <button type="button" class="counter-btn" id="minusBtn">—</button>
+              <div class="counter-value" id="guestCountDisplay">0</div>
+              <button type="button" class="counter-btn" id="plusBtn">+</button>
+              <input type="hidden" name="guests" id="guestCountInput" value="0"/>
+            </div>
+          </div>
+          
+          <button type="submit" class="btn-rsvp-submit">
+            <span id="submitText">ЖІБЕРУ</span>
+            <div class="spinner" id="submitSpinner"></div>
+          </button>
+          
+          <p class="form-status" id="formStatus"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section class="section program-section" id="program">
+  <div class="container">
+    <div class="section-label fade-in">Бағдарлама</div>
+    <h2 class="section-title fade-in" style="--d:0.1s">Той бағдарламасы</h2>
+    <div class="timeline fade-in" style="--d:0.2s">
+      <div class="timeline-item">
+        <div class="timeline-time">15:00</div>
+        <div class="timeline-dot">
+          <svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="9" fill="#f8f5f0" stroke="#d4b483" stroke-width="1.5"/><circle cx="11" cy="11" r="4" fill="#d4b483"/></svg>
+        </div>
+        <div class="timeline-content">
+          <h3>Қонақтарды қарсы алу</h3>
+          <p>Ақ тілекпен жиналу. Ас дастарқан, сусын</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">16:00</div>
+        <div class="timeline-dot">
+          <svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="9" fill="#f8f5f0" stroke="#d4b483" stroke-width="1.5"/><circle cx="11" cy="11" r="4" fill="#d4b483"/></svg>
+        </div>
+        <div class="timeline-content">
+          <h3>Беташар</h3>
+          <p>Дәстүрлі рәсімнің салтанатты басталуы</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">17:30</div>
+        <div class="timeline-dot">
+          <svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="9" fill="#f8f5f0" stroke="#d4b483" stroke-width="1.5"/><circle cx="11" cy="11" r="4" fill="#d4b483"/></svg>
+        </div>
+        <div class="timeline-content">
+          <h3>Бата беру</h3>
           <p>Ақсақалдар мен ата-ана батасы</p>
         </div>
       </div>
@@ -1595,6 +1625,29 @@ document.addEventListener('DOMContentLoaded',function(){
   // RSVP Form Handler
   const rsvpForm=document.getElementById('rsvpForm');
   const formStatus=document.getElementById('formStatus');
+  
+  // Guest Counter Logic
+  const minusBtn = document.getElementById('minusBtn');
+  const plusBtn = document.getElementById('plusBtn');
+  const guestDisplay = document.getElementById('guestCountDisplay');
+  const guestInput = document.getElementById('guestCountInput');
+  
+  if (minusBtn && plusBtn && guestDisplay && guestInput) {
+    let count = 0;
+    minusBtn.addEventListener('click', () => {
+      if (count > 0) {
+        count--;
+        guestDisplay.textContent = count;
+        guestInput.value = count;
+      }
+    });
+    plusBtn.addEventListener('click', () => {
+      count++;
+      guestDisplay.textContent = count;
+      guestInput.value = count;
+    });
+  }
+
   if(rsvpForm){
     rsvpForm.addEventListener('submit',async function(e){
       e.preventDefault();
@@ -1602,36 +1655,26 @@ document.addEventListener('DOMContentLoaded',function(){
       const spinner=document.getElementById('submitSpinner');
       const btn=rsvpForm.querySelector('button[type="submit"]');
       submitText.style.display='none';spinner.style.display='block';btn.disabled=true;
-      await new Promise(r=>setTimeout(r,1200));
-      formStatus.textContent='Рақмет! Жауабыңыз қабылданды. ✓';
-      formStatus.style.color='#16a34a';
-      rsvpForm.reset();
-      submitText.style.display='inline';spinner.style.display='none';btn.disabled=false;
-    });
-  }
-
-  // Survey Form Handler
-  const surveyForm=document.getElementById('surveyForm');
-  const surveyStatus=document.getElementById('surveyStatus');
-  if(surveyForm){
-    surveyForm.addEventListener('submit',async function(e){
-      e.preventDefault();
-      const submitText=document.getElementById('surveySubmitText');
-      const spinner=document.getElementById('surveySpinner');
-      const btn=surveyForm.querySelector('button[type="submit"]');
-      submitText.style.display='none';spinner.style.display='block';btn.disabled=true;
       
-      // Collect simple form data
-      const guestName=document.getElementById('guestName').value;
-      const attendance=document.querySelector('input[name="attendance"]:checked').value;
-      const guestCount=document.getElementById('guestCount').value;
+      // Collect form data
+      const formData = new FormData(rsvpForm);
+      const data = Object.fromEntries(formData.entries());
       
-      // Simulate submission
-      await new Promise(r=>setTimeout(r,1200));
-      surveyStatus.textContent='Рақмет! Жауабыңыз қабылданды. ✓';
-      surveyStatus.style.color='#16a34a';
-      surveyForm.reset();
-      submitText.style.display='inline';spinner.style.display='none';btn.disabled=false;
+      try {
+        // Here you would normally send to your endpoint
+        // const response = await fetch(RSVP_ENDPOINT, { method: 'POST', body: JSON.stringify(data) });
+        await new Promise(r=>setTimeout(r,1200));
+        formStatus.textContent='Рақмет! Жауабыңыз қабылданды. ✓';
+        formStatus.style.color='#16a34a';
+        rsvpForm.reset();
+        if (guestDisplay) guestDisplay.textContent = '0';
+        if (guestInput) guestInput.value = '0';
+      } catch (error) {
+        formStatus.textContent='Қате орын алды, қайта байқап көріңіз.';
+        formStatus.style.color='#dc2626';
+      } finally {
+        submitText.style.display='inline';spinner.style.display='none';btn.disabled=false;
+      }
     });
   }
 
