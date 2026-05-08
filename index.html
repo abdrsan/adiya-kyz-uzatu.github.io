@@ -551,14 +551,10 @@ a{text-decoration:none;color:inherit;}
   font-weight:700;position:relative;z-index:2;
 }
 .cal-highlight::before{
-  content:'\f004';
-  font-family: 'Font Awesome 6 Free';
-  font-weight: 300; /* Тонкая линия */
+  content:'';
   position:absolute;top:50%;left:50%;
   transform:translate(-50%,-50%) scale(3.5);
-  font-size:1rem;
-  color:#000;
-  opacity:1;
+  width:60px;height:60px;
   z-index:-1;
   animation:heartbeat 1.5s ease-in-out infinite;
 }
@@ -567,6 +563,11 @@ a{text-decoration:none;color:inherit;}
   transform:translate(-50%,-50%);
   font-size:1rem;font-weight:700;
   color:#000;z-index:1;
+}
+/* SVG сердце для тонкой линии */
+.cal-highlight::before {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='0.5'%3E%3Cpath d='M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z'/%3E%3C/svg%3E") no-repeat center;
+  background-size: contain;
 }
 @keyframes heartbeat{
   0%,100%{transform:translate(-50%,-50%) scale(3.5);opacity:1;}

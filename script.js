@@ -121,18 +121,26 @@ document.addEventListener('DOMContentLoaded', function() {
           body: new URLSearchParams(payload).toString(),
         });
 
+        submitText.textContent = "ЖІБЕРУЛДІ ✓";
+        submitText.style.display = 'inline';
+        submitSpinner.style.display = 'none';
+        submitButton.disabled = false;
+        submitButton.style.opacity = '1';
+        
         formStatus.textContent = "Рақмет! Жауабыңыз қабылданды. ✓";
         formStatus.style.color = "#16a34a";
         rsvpForm.reset();
       } catch (error) {
         console.error("RSVP submit failed:", error);
-        formStatus.textContent = "Қате орын алды. Кейінірек қайталап көріңіз.";
-        formStatus.style.color = "#dc2626";
-      } finally {
+        
+        submitText.textContent = "ҚАЙТА ЖІБЕРУ";
         submitText.style.display = 'inline';
         submitSpinner.style.display = 'none';
         submitButton.disabled = false;
         submitButton.style.opacity = '1';
+        
+        formStatus.textContent = "Қате орын алды. Кейінірек қайталап көріңіз.";
+        formStatus.style.color = "#dc2626";
       }
     });
   }
