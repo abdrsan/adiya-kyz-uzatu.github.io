@@ -37,3 +37,4 @@ git push -u origin main
 - Адаптивті мобильді дизайн
 - Музыкалық фон
 - Кері санақ таймер
+# adiya-kyz-uzatu.github.io
