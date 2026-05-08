@@ -46,35 +46,63 @@ setInterval(updateTimer, 1000);
 
 // Music Player
 function initMusicPlayer() {
-  const audio = document.getElementById('backgroundMusic');
+  console.log("Initializing music player...");
+  
+  const video = document.getElementById('backgroundMusic');
   const toggleBtn = document.getElementById('musicToggle');
   const musicIconOff = document.getElementById('musicIconOff');
   const musicIconOn = document.getElementById('musicIconOn');
   
-  if (!audio || !toggleBtn) {
-    console.error("Audio element or toggle button not found");
+  console.log("Video element:", video);
+  console.log("Toggle button:", toggleBtn);
+  console.log("Music icons:", musicIconOff, musicIconOn);
+  
+  if (!video || !toggleBtn) {
+    console.error("Video element or toggle button not found");
     return;
   }
 
   // Изначально выключено
-  audio.muted = false;
-  audio.pause();
+  video.muted = true;
+  video.pause();
   musicIconOff.style.display = 'block';
   musicIconOn.style.display = 'none';
 
   toggleBtn.addEventListener('click', function() {
-    if (audio.paused) {
-      audio.play().then(() => {
+    console.log("Music button clicked, video.paused:", video.paused);
+    
+    if (video.paused) {
+      console.log("Attempting to play video...");
+      video.muted = false;
+      video.play().then(() => {
+        console.log("Video playing successfully");
         musicIconOff.style.display = 'none';
         musicIconOn.style.display = 'block';
       }).catch(err => {
         console.error("Play failed:", err);
+        console.log("Video state:", {
+          paused: video.paused,
+          currentTime: video.currentTime,
+          duration: video.duration,
+          readyState: video.readyState
+        });
       });
     } else {
-      audio.pause();
+      console.log("Pausing video...");
+      video.pause();
       musicIconOff.style.display = 'block';
       musicIconOn.style.display = 'none';
     }
+  });
+  
+  // Проверяем загрузку видео
+  video.addEventListener('loadeddata', () => {
+    console.log("Video data loaded");
+  });
+  
+  video.addEventListener('error', (e) => {
+    console.error("Video error:", e);
+    console.log("Video error code:", video.error ? video.error.code : 'unknown');
   });
 }
 
