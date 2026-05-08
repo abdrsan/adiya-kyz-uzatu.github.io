@@ -545,16 +545,29 @@ a{text-decoration:none;color:inherit;}
 }
 .cal-empty{visibility:hidden;cursor:default;}
 .cal-highlight{
-  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dark) 100%) !important;
-  color:#1a0f06 !important;
-  font-weight:700;border-radius:50% !important;
-  box-shadow:0 4px 12px rgba(212,180,131,0.5);
-  transform:scale(1.1);position:relative;z-index:2;
+  background:transparent !important;
+  color:#d4b483 !important;
+  font-weight:700;position:relative;z-index:2;
+  transform:scale(1.2);
 }
 .cal-highlight::before{
-  content:'';position:absolute;top:-2px;left:-2px;right:-2px;bottom:-2px;
-  border:2px solid var(--gold);border-radius:50%;opacity:0.3;
-  animation:pulse 2s infinite;
+  content:'❤';position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%) scale(2);
+  font-size:1.2rem;color:#d4b483;
+  opacity:0.3;z-index:-1;
+  animation:heartbeat 2s ease-in-out infinite;
+}
+.cal-highlight::after{
+  content:'15';position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  font-size:0.9rem;font-weight:700;
+  color:#8b6b3f;z-index:1;
+}
+@keyframes heartbeat{
+  0%,100%{transform:translate(-50%,-50%) scale(2);opacity:0.3;}
+  25%{transform:translate(-50%,-50%) scale(2.1);opacity:0.4;}
+  50%{transform:translate(-50%,-50%) scale(2);opacity:0.3;}
+  75%{transform:translate(-50%,-50%) scale(2.05);opacity:0.35;}
 }
 @keyframes pulse{
   0%,100%{transform:scale(1);opacity:0.3;}
