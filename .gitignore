@@ -1,0 +1,21 @@
+# Sensitive configuration files
+config.js
+.env
+*.env
+
+# Backup files
+*.bak
+index.html.bak
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node modules (if any)
+node_modules/
