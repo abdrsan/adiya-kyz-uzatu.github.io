@@ -1680,12 +1680,12 @@ a{text-decoration:none;color:inherit;}
               <span class="radio-text">КЕЛЕМІН</span>
             </label>
             <label class="radio-option">
-              <input type="radio" name="attendance" value="with_spouse"/>
+              <input type="radio" name="attendance" value="with_spouse" required/>
               <span class="radio-circle"></span>
               <span class="radio-text">ЖҰБЫММЕН КЕЛЕМІН</span>
             </label>
             <label class="radio-option">
-              <input type="radio" name="attendance" value="no"/>
+              <input type="radio" name="attendance" value="no" required/>
               <span class="radio-circle"></span>
               <span class="radio-text">ӨКІНІШКЕ ОРАЙ, ҚАТЫСА АЛМАЙМЫН</span>
             </label>
@@ -1912,14 +1912,27 @@ document.addEventListener('DOMContentLoaded',function(){
       const submitText=document.getElementById('submitText');
       const spinner=document.getElementById('submitSpinner');
       const btn=rsvpForm.querySelector('button[type="submit"]');
-      submitText.style.display='none';spinner.style.display='block';btn.disabled=true;
+      
+      // Validation
+      const attendance = rsvpForm.querySelector('input[name="attendance"]:checked');
+      const guestCount = parseInt(document.getElementById('guestCountInput').value) || 0;
+      
+      if (!attendance) {
+        formStatus.textContent='Қатысуыңызды таңдаңыз (Келемін / Жұбымен келемін / Қатыса алмаймын)';
+        formStatus.style.color='#dc2626';
+        return;
+      }
+      
+      if (guestCount < 0) {
+        formStatus.textContent='Қонақ саны теріс болмауы керек';
+        formStatus.style.color='#dc2626';
+        return;
+      }
+      
+      spinner.style.display='block';btn.disabled=true;
       
       // Change button text to loading
       submitText.textContent='Өңделуде...';
-      
-      // Show loading message
-      formStatus.textContent='Өңделуде...';
-      formStatus.style.color='#6b7280';
       
       // Collect form data
       const formData = new FormData(rsvpForm);
@@ -1948,6 +1961,13 @@ document.addEventListener('DOMContentLoaded',function(){
           rsvpForm.reset();
           if (guestDisplay) guestDisplay.textContent = '0';
           if (guestInput) guestInput.value = '0';
+          
+          // Reset button after 3 seconds
+          setTimeout(() => {
+            submitText.textContent='ЖІБЕРУ';
+            submitText.style.color='';
+            btn.disabled=false;
+          }, 3000);
         } else {
           throw new Error(result.error || 'Unknown error');
         }
@@ -1957,14 +1977,8 @@ document.addEventListener('DOMContentLoaded',function(){
         submitText.style.color='#dc2626';
         formStatus.textContent='Қате орын алды, қайта байқап көріңіз.';
         formStatus.style.color='#dc2626';
-      } finally {
         spinner.style.display='none';
-        // Reset button after 3 seconds if successful
-        setTimeout(() => {
-          submitText.textContent='ЖІБЕРУ';
-          submitText.style.color='';
-          btn.disabled=false;
-        }, 3000);
+        btn.disabled=false;
       }
     });
   }
