@@ -1914,24 +1914,57 @@ document.addEventListener('DOMContentLoaded',function(){
       const btn=rsvpForm.querySelector('button[type="submit"]');
       submitText.style.display='none';spinner.style.display='block';btn.disabled=true;
       
+      // Change button text to loading
+      submitText.textContent='Өңделуде...';
+      
+      // Show loading message
+      formStatus.textContent='Өңделуде...';
+      formStatus.style.color='#6b7280';
+      
       // Collect form data
       const formData = new FormData(rsvpForm);
       const data = Object.fromEntries(formData.entries());
       
+      // Google Apps Script URL (замените на реальный URL)
+      const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyj7NSYwAA_Xrf3pm9f9niToS1O3CLMyPWIeZsjbCyNKJW2Ile8S2pl-CC4piYhD_ny/exec'; // Замените на ваш URL
+      
       try {
-        // Here you would normally send to your endpoint
-        // const response = await fetch(RSVP_ENDPOINT, { method: 'POST', body: JSON.stringify(data) });
-        await new Promise(r=>setTimeout(r,1200));
-        formStatus.textContent='Рақмет! Жауабыңыз қабылданды. ✓';
-        formStatus.style.color='#16a34a';
-        rsvpForm.reset();
-        if (guestDisplay) guestDisplay.textContent = '0';
-        if (guestInput) guestInput.value = '0';
+        const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: new URLSearchParams(data)
+        });
+        
+        const result = await response.json();
+        
+        if (result.message === 'OK') {
+          // Change button text to success message
+          submitText.textContent='Рақмет! Жауабыңыз қабылданды. ✓';
+          submitText.style.color='#16a34a';
+          formStatus.textContent='Рақмет! Жауабыңыз қабылданды. ✓';
+          formStatus.style.color='#16a34a';
+          rsvpForm.reset();
+          if (guestDisplay) guestDisplay.textContent = '0';
+          if (guestInput) guestInput.value = '0';
+        } else {
+          throw new Error(result.error || 'Unknown error');
+        }
       } catch (error) {
+        console.error('RSVP submission error:', error);
+        submitText.textContent='Қате орын алды';
+        submitText.style.color='#dc2626';
         formStatus.textContent='Қате орын алды, қайта байқап көріңіз.';
         formStatus.style.color='#dc2626';
       } finally {
-        submitText.style.display='inline';spinner.style.display='none';btn.disabled=false;
+        spinner.style.display='none';
+        // Reset button after 3 seconds if successful
+        setTimeout(() => {
+          submitText.textContent='ЖІБЕРУ';
+          submitText.style.color='';
+          btn.disabled=false;
+        }, 3000);
       }
     });
   }
