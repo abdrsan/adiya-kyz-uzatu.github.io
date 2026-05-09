@@ -13,6 +13,9 @@
 /* Font loading optimization - using font-display: swap via Google Fonts */
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+<link rel="shortcut icon" href="/favicon.ico"/>
+<link rel="apple-touch-icon" href="/favicon.ico"/>
 <style>
 :root {
   --bg: #f8f5f0;
@@ -1858,6 +1861,33 @@ document.addEventListener('DOMContentLoaded',function(){
     // Set initial volume
     backgroundMusic.volume = 0.3;
     
+    // Auto-play music on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      // Try to play music after user interaction
+      const playMusic = () => {
+        backgroundMusic.play().then(() => {
+          iconOff.style.display='none';
+          iconOn.style.display='block';
+          musicBtn.querySelector('span').textContent='Әуенді өшіру';
+          isPlaying = true;
+        }).catch(e => {
+          console.log('Music play failed:', e);
+          musicBtn.querySelector('span').textContent='Музыка қосылмады';
+        });
+      };
+      
+      // Try to play music after first user interaction
+      const startMusic = () => {
+        document.removeEventListener('click', startMusic);
+        document.removeEventListener('touchstart', startMusic);
+        playMusic();
+      };
+      
+      // Add event listeners for first interaction
+      document.addEventListener('click', startMusic, { once: true });
+      document.addEventListener('touchstart', startMusic, { once: true });
+    });
+    
     musicBtn.addEventListener('click',function(){
       if(isPlaying){
         backgroundMusic.pause();
@@ -1985,12 +2015,12 @@ document.addEventListener('DOMContentLoaded',function(){
     }
     
     function showSuccessState() {
-      submitText.textContent = 'ЖІБЕРУ';
-      submitText.style.color = '';
+      submitText.textContent = 'Рақмет! Жауабыңыз қабылданды. ';
+      submitText.style.color = '#16a34a';
       spinner.style.display = 'none';
       btn.disabled = false;
-      formStatus.textContent = 'Рақмет! Жауабыңыз қабылданды. ';
-      formStatus.style.color = '#16a34a';
+      formStatus.textContent = '';
+      formStatus.style.color = '';
       
       // Reset button text after 8 seconds
       setTimeout(() => {
