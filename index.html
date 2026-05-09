@@ -1670,7 +1670,7 @@ a{text-decoration:none;color:inherit;}
         <form id="rsvpForm">
           <div class="form-group">
             <label>АТЫ-ЖӨНІҢІЗ (ЖҰБЫҢЫЗБЕН КЕЛЕТІН БОЛСАҢЫЗ, ЕСІМДЕРІҢІЗДІ БІРГЕ ЖАЗУЫҢЫЗДЫ ӨТІНЕМІЗ)</label>
-            <input type="text" id="rsvpName" name="name" placeholder="ЕСІМІҢІЗ" required/>
+            <input type="text" id="rsvpName" name="name" required/>
           </div>
           
           <div class="radio-options">
@@ -1695,9 +1695,9 @@ a{text-decoration:none;color:inherit;}
             <p class="guest-counter-label">ТОЙҒА НЕШЕ АДАМ КЕЛЕСІЗДЕР</p>
             <div class="guest-counter-wrap">
               <button type="button" class="counter-btn" id="minusBtn">—</button>
-              <div class="counter-value" id="guestCountDisplay">0</div>
+              <div class="counter-value" id="guestCountDisplay">1</div>
               <button type="button" class="counter-btn" id="plusBtn">+</button>
-              <input type="hidden" name="guests" id="guestCountInput" value="0"/>
+              <input type="hidden" name="guests" id="guestCountInput" value="1"/>
             </div>
           </div>
           
@@ -1907,39 +1907,51 @@ document.addEventListener('DOMContentLoaded',function(){
   }
 
   if(rsvpForm){
+    // Get form elements
+    const formStatus = document.getElementById('formStatus');
+    const submitText = document.getElementById('submitText');
+    const spinner = document.getElementById('submitSpinner');
+    const btn = rsvpForm.querySelector('button[type="submit"]');
+    const guestDisplay = document.getElementById('guestCountDisplay');
+    const guestInput = document.getElementById('guestCountInput');
+    
     rsvpForm.addEventListener('submit',async function(e){
       e.preventDefault();
-      const submitText=document.getElementById('submitText');
-      const spinner=document.getElementById('submitSpinner');
-      const btn=rsvpForm.querySelector('button[type="submit"]');
+      
+      // Get form values
+      const nameInput = document.getElementById('rsvpName');
+      const attendance = rsvpForm.querySelector('input[name="attendance"]:checked');
+      const guestCount = parseInt(guestInput.value) || 0;
+      
+      // Clear previous status
+      formStatus.textContent = '';
+      formStatus.style.color = '';
       
       // Validation
-      const attendance = rsvpForm.querySelector('input[name="attendance"]:checked');
-      const guestCount = parseInt(document.getElementById('guestCountInput').value) || 0;
+      if (!nameInput || !nameInput.value.trim()) {
+        showError('Аты-жөніңізді енгізіңіз');
+        return;
+      }
       
-      if (!attendance) {
-        formStatus.textContent='Қатысуыңызды таңдаңыз (Келемін / Жұбымен келемін / Қатыса алмаймын)';
-        formStatus.style.color='#dc2626';
+      if (!attendance || !attendance.value) {
+        showError('Қатысуыңызды таңдаңыз (Келемін / Жұбымен келемін / Қатыса алмаймын)');
         return;
       }
       
       if (guestCount < 0) {
-        formStatus.textContent='Қонақ саны теріс болмауы керек';
-        formStatus.style.color='#dc2626';
+        showError('Қонақ саны теріс болмауы керек');
         return;
       }
       
-      spinner.style.display='block';btn.disabled=true;
-      
-      // Change button text to loading
-      submitText.textContent='Өңделуде...';
+      // Show loading state
+      setLoadingState();
       
       // Collect form data
       const formData = new FormData(rsvpForm);
       const data = Object.fromEntries(formData.entries());
       
-      // Google Apps Script URL (замените на реальный URL)
-      const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyj7NSYwAA_Xrf3pm9f9niToS1O3CLMyPWIeZsjbCyNKJW2Ile8S2pl-CC4piYhD_ny/exec'; // Замените на ваш URL
+      // Google Apps Script URL
+      const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyj7NSYwAA_Xrf3pm9f9niToS1O3CLMyPWIeZsjbCyNKJW2Ile8S2pl-CC4piYhD_ny/exec';
       
       try {
         const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
@@ -1953,34 +1965,63 @@ document.addEventListener('DOMContentLoaded',function(){
         const result = await response.json();
         
         if (result.message === 'OK') {
-          // Change button text to success message
-          submitText.textContent='Рақмет! Жауабыңыз қабылданды. ✓';
-          submitText.style.color='#16a34a';
-          formStatus.textContent='Рақмет! Жауабыңыз қабылданды. ✓';
-          formStatus.style.color='#16a34a';
+          showSuccessState();
           rsvpForm.reset();
-          if (guestDisplay) guestDisplay.textContent = '0';
-          if (guestInput) guestInput.value = '0';
-          
-          // Reset button after 3 seconds
-          setTimeout(() => {
-            submitText.textContent='ЖІБЕРУ';
-            submitText.style.color='';
-            btn.disabled=false;
-          }, 3000);
+          resetGuestCounter();
         } else {
           throw new Error(result.error || 'Unknown error');
         }
       } catch (error) {
         console.error('RSVP submission error:', error);
-        submitText.textContent='Қате орын алды';
-        submitText.style.color='#dc2626';
-        formStatus.textContent='Қате орын алды, қайта байқап көріңіз.';
-        formStatus.style.color='#dc2626';
-        spinner.style.display='none';
-        btn.disabled=false;
+        showErrorState();
       }
     });
+    
+    function setLoadingState() {
+      submitText.textContent = 'Өңделуде...';
+      submitText.style.color = '';
+      spinner.style.display = 'block';
+      btn.disabled = true;
+    }
+    
+    function showSuccessState() {
+      submitText.textContent = 'ЖІБЕРУ';
+      submitText.style.color = '';
+      spinner.style.display = 'none';
+      btn.disabled = false;
+      formStatus.textContent = 'Рақмет! Жауабыңыз қабылданды. ';
+      formStatus.style.color = '#16a34a';
+      
+      // Reset button text after 8 seconds
+      setTimeout(() => {
+        submitText.textContent = 'ЖІБЕРУ';
+        submitText.style.color = '';
+        btn.disabled = false;
+      }, 8000);
+    }
+    
+    function showError(message) {
+      submitText.textContent = '';
+      submitText.style.color = '';
+      spinner.style.display = 'none';
+      btn.disabled = false;
+      formStatus.textContent = message;
+      formStatus.style.color = '#dc2626';
+    }
+    
+    function showErrorState() {
+      submitText.textContent = 'Қате орын алды';
+      submitText.style.color = '#dc2626';
+      spinner.style.display = 'none';
+      btn.disabled = false;
+      formStatus.textContent = 'Қате орын алды, қайта байқап көріңіз.';
+      formStatus.style.color = '#dc2626';
+    }
+    
+    function resetGuestCounter() {
+      if (guestDisplay) guestDisplay.textContent = '0';
+      if (guestInput) guestInput.value = '0';
+    }
   }
 
   // Запуск таймера
