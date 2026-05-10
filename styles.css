@@ -149,23 +149,7 @@ a { text-decoration: none; color: inherit; }
   box-shadow: 0 0 10px rgba(212, 180, 131, 0.6);
 }
 
-/* ══════════════════════════════
-   HOSTS SECTION
-════════════════════════════ */
-.hosts-section {
-  background: var(--bg-alt);
-  position: relative;
-  overflow: hidden;
-}
 
-.hosts-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='40' stroke='%23d4b483' stroke-width='0.5' opacity='0.06'/%3E%3Cpath d='M50 10 L55 30 L75 30 L60 40 L65 60 L50 50 L35 60 L40 40 L25 30 L45 30 Z' fill='%23d4b483' fill-opacity='0.04'/%3E%3C/svg%3E");
-  background-size: 100px 100px;
-  pointer-events: none;
-}
 
 /* ══════════════════════════════
    MUSIC BUTTON
@@ -360,105 +344,81 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ══════════════════════════════
-   HOSTS SECTION REDESIGN
+   HOSTS SECTION — Premium Dark
 ══════════════════════════════ */
 .hosts-section {
   padding: 100px 0;
-  background: var(--bg);
+  background: #0d0905;
   position: relative;
   overflow: hidden;
 }
 
-.hosts-card {
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: center;
-  position: relative;
-  padding: 60px 20px;
-  background: radial-gradient(circle at center, rgba(212,180,131,0.05) 0%, transparent 70%);
+.hosts-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, rgba(212, 180, 131, 0.07) 0%, transparent 65%);
+  pointer-events: none;
 }
 
-.hosts-ornament-wrap {
+.hosts-content {
   display: flex;
-  justify-content: center;
-  margin: 15px 0;
-  animation: fadeInOrnament 1.5s ease-out forwards;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
 }
 
-@keyframes fadeInOrnament {
-  from { opacity: 0; transform: scale(0.8); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-.hosts-section-label {
-  font-family: 'Playfair Display', serif;
-  font-size: 0.85rem;
+.hosts-badge {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.78rem;
   letter-spacing: 0.45em;
   text-transform: uppercase;
-  color: var(--gold-dark);
-  margin-bottom: 24px;
-  display: block;
-  opacity: 0.8;
-  font-weight: 600;
-}
-
-.hosts-names-wrapper {
-  margin: 15px 0;
-}
-
-.hosts-names-title {
-  font-family: 'EB Garamond', serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(2.8rem, 10vw, 4.5rem);
-  color: var(--text);
-  line-height: 1.1;
-  margin: 0;
-  position: relative;
-  display: inline-block;
-  padding: 0 40px;
-  text-shadow: 0 2px 10px rgba(212,180,131,0.1);
+  color: rgba(212, 180, 131, 0.75);
 }
 
 .hosts-divider {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 30px;
-  margin-bottom: 20px;
+  gap: 14px;
+  width: 180px;
 }
 
 .hosts-divider-line {
-  width: 60px;
-  height: 1.5px;
-  background: linear-gradient(to right, transparent, var(--gold), transparent);
-  opacity: 0.6;
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 180, 131, 0.45), transparent);
 }
 
-.hosts-ornament {
+.hosts-names-simple {
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.8;
-}
-
-/* Background ornament pattern */
-.hosts-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 10 L65 35 L90 35 L70 45 L78 70 L60 55 L42 70 L50 45 L30 35 L55 35 Z' fill='%23d4b483' fill-opacity='0.03'/%3E%3C/svg%3E");
-  background-size: 120px 120px;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.chip-dot {
+  gap: 18px;
+  border: 1px solid rgba(212, 180, 131, 0.32);
+  border-radius: 100px;
+  padding: 15px 48px;
   color: var(--gold);
-  font-size: 1.1rem;
-  line-height: 1;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.4rem, 5vw, 1.9rem);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
 }
+
+.hosts-names-simple .chip-dot {
+  color: var(--gold);
+  opacity: 0.4;
+  font-size: 0.9rem;
+}
+
 
 .hero-scroll-btn {
   display: flex;
@@ -691,6 +651,7 @@ a { text-decoration: none; color: inherit; }
   }
 
   .invitation-card { padding: 40px 24px; }
+  .hosts-card { padding: 60px 20px; }
   .form-inner { padding: 32px 20px; }
   .location-card { padding: 36px 24px; }
 
