@@ -121,15 +121,15 @@ a { text-decoration: none; color: inherit; }
 
 .loader-name {
   font-family: 'EB Garamond', serif; font-style: italic;
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: #d4b483;
   line-height: 1;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .loader-sub {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.85rem;
+  font-size: 0.7rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: rgba(212, 180, 131, 0.6);
@@ -150,15 +150,33 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ══════════════════════════════
+   HOSTS SECTION
+════════════════════════════ */
+.hosts-section {
+  background: var(--bg-alt);
+  position: relative;
+  overflow: hidden;
+}
+
+.hosts-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='40' stroke='%23d4b483' stroke-width='0.5' opacity='0.06'/%3E%3Cpath d='M50 10 L55 30 L75 30 L60 40 L65 60 L50 50 L35 60 L40 40 L25 30 L45 30 Z' fill='%23d4b483' fill-opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 100px 100px;
+  pointer-events: none;
+}
+
+/* ══════════════════════════════
    MUSIC BUTTON
 ══════════════════════════════ */
 .music-btn {
   position: fixed;
-  top: 20px; right: 20px;
+  top: 16px; right: 16px;
   z-index: 500;
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
   background: rgba(26, 15, 6, 0.55);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -166,9 +184,9 @@ a { text-decoration: none; color: inherit; }
   border-radius: 50px;
   color: #d4b483;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   letter-spacing: 0.08em;
-  padding: 9px 16px 9px 12px;
+  padding: 8px 14px 8px 10px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -250,12 +268,12 @@ a { text-decoration: none; color: inherit; }
   position: relative;
   z-index: 3;
   text-align: center;
-  padding: 0 24px 52px;
+  padding: 0 20px 44px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  max-width: 600px;
+  gap: 10px;
+  max-width: 500px;
   width: 100%;
   /* Always stick to bottom so face stays visible */
   margin-top: auto;
@@ -263,13 +281,13 @@ a { text-decoration: none; color: inherit; }
 
 .hero-badge {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--gold);
   background: rgba(15, 8, 2, 0.6);
   border: 1px solid rgba(212, 180, 131, 0.45);
-  padding: 7px 20px;
+  padding: 6px 16px;
   border-radius: 50px;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -280,8 +298,8 @@ a { text-decoration: none; color: inherit; }
   font-family: 'EB Garamond', serif;
   font-style: italic;
   font-weight: 500;
-  font-size: clamp(4rem, 18vw, 7rem);
-  color: #ffffff;
+  font-size: clamp(3.5rem, 16vw, 6rem);
+  color: #000;
   line-height: 1.05;
   /* No background — explicit transparent */
   background: transparent;
@@ -299,9 +317,9 @@ a { text-decoration: none; color: inherit; }
 .hero-divider {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   width: 100%;
-  max-width: 240px;
+  max-width: 200px;
 }
 
 .hero-divider-line {
@@ -312,10 +330,10 @@ a { text-decoration: none; color: inherit; }
 
 .hero-subtitle {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1rem, 3.5vw, 1.2rem);
-  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  color: #000;
   font-weight: 400;
-  line-height: 1.8;
+  line-height: 1.6;
   font-style: italic;
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7);
 }
@@ -329,38 +347,38 @@ a { text-decoration: none; color: inherit; }
 .hero-date-chip {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   background: rgba(15, 8, 2, 0.62);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(212, 180, 131, 0.4);
   border-radius: 50px;
-  padding: 10px 22px;
-  color: rgba(255, 255, 255, 0.92);
+  padding: 8px 18px;
+  color: #000;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1rem;
+  font-size: 1.2rem;
   letter-spacing: 0.05em;
   white-space: nowrap;
 }
 
 .chip-dot {
   color: var(--gold);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   line-height: 1;
 }
 
 .hero-scroll-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: rgba(212, 180, 131, 0.85);
+  gap: 6px;
+  color: #000;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   background: rgba(15, 8, 2, 0.5);
   border: 1px solid rgba(212, 180, 131, 0.35);
-  padding: 9px 22px;
+  padding: 8px 18px;
   border-radius: 50px;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
@@ -369,7 +387,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .hero-scroll-btn:hover {
-  color: rgba(255, 255, 255, 0.9);
+  color: #000;
   border-color: rgba(212, 180, 131, 0.6);
   animation: none;
 }
@@ -382,24 +400,24 @@ a { text-decoration: none; color: inherit; }
 /* Hero corners – Kazakh ornaments */
 .hero-corner {
   position: absolute;
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   z-index: 3;
   opacity: 0.5;
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 5 L5 25 M5 5 L25 5' stroke='%23d4b483' stroke-width='1.5' fill='none'/%3E%3Cpath d='M10 10 L10 20 M10 10 L20 10' stroke='%23d4b483' stroke-width='0.8' fill='none' opacity='0.6'/%3E%3Ccircle cx='5' cy='5' r='2' fill='%23d4b483'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 5 L5 15 M5 5 L15 5' stroke='%23d4b483' stroke-width='1' fill='none'/%3E%3Cpath d='M10 10 L10 15 M10 10 L15 10' stroke='%23d4b483' stroke-width='0.6' fill='none' opacity='0.6'/%3E%3Ccircle cx='5' cy='5' r='1.5' fill='%23d4b483'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: contain;
 }
 
-.hero-corner--tl { top: 20px; left: 20px; }
-.hero-corner--tr { top: 20px; right: 20px; transform: scaleX(-1); }
-.hero-corner--bl { bottom: 20px; left: 20px; transform: scaleY(-1); }
-.hero-corner--br { bottom: 20px; right: 20px; transform: scale(-1); }
+.hero-corner--tl { top: 12px; left: 12px; }
+.hero-corner--tr { top: 12px; right: 12px; transform: scaleX(-1); }
+.hero-corner--bl { bottom: 12px; left: 12px; transform: scaleY(-1); }
+.hero-corner--br { bottom: 12px; right: 12px; transform: scale(-1); }
 
 /* ── Reveal animations ── */
 .reveal-up {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(24px);
   animation: revealUp 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
   animation-delay: var(--d, 0s);
 }
@@ -412,7 +430,7 @@ a { text-decoration: none; color: inherit; }
    SECTION COMMONS
 ══════════════════════════════ */
 .section {
-  padding: 80px 0;
+  padding: 15px 0;
 }
 
 .section-label {
@@ -422,32 +440,32 @@ a { text-decoration: none; color: inherit; }
   letter-spacing: 0.35em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 
 .section-title {
   text-align: center;
   font-family: 'EB Garamond', serif;
-  font-size: clamp(1.7rem, 5vw, 2.4rem);
+  font-size: clamp(1.5rem, 5vw, 2rem);
   font-weight: 600;
-  color: var(--text);
-  margin-bottom: 48px;
+  color: #000;
+  margin-bottom: 40px;
   line-height: 1.2;
 }
 
 .section-sub {
   text-align: center;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem;
-  color: var(--text-soft);
-  margin-top: -32px;
-  margin-bottom: 40px;
+  font-size: 1rem;
+  color: #000;
+  margin-top: -28px;
+  margin-bottom: 32px;
 }
 
 /* ── Fade-in scroll animation ── */
 .fade-in {
   opacity: 0;
-  transform: translateY(32px);
+  transform: translateY(28px);
   transition: opacity 0.85s cubic-bezier(0.22, 0.61, 0.36, 1),
               transform 0.85s cubic-bezier(0.22, 0.61, 0.36, 1);
   transition-delay: var(--d, 0s);
@@ -461,14 +479,14 @@ a { text-decoration: none; color: inherit; }
 /* ══════════════════════════════
    POETRY SECTION
 ══════════════════════════════ */
-.poetry-section {
+.program-section {
   background: var(--bg-alt);
   position: relative;
   overflow: hidden;
-  padding: 72px 0;
+  padding: 60px 0;
 }
 
-.poetry-section::before {
+.program-section::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -479,720 +497,40 @@ a { text-decoration: none; color: inherit; }
 .ornament-top, .ornament-bottom {
   display: flex;
   justify-content: center;
-  margin-bottom: 36px;
+  margin-bottom: 30px;
 }
-.ornament-bottom { margin-bottom: 0; margin-top: 36px; }
+.ornament-bottom { margin-bottom: 0; margin-top: 30px; }
 
-.poetry-inner {
+.program-inner {
   text-align: center;
-  max-width: 560px;
+  max-width: 480px;
   margin: 0 auto;
   position: relative;
 }
 
-.poetry-label {
+.program-label {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.72rem;
+  font-size: 0.65rem;
   letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 24px;
-}
-
-.poetry-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.2rem, 3.5vw, 1.5rem);
-  font-style: italic;
-  font-weight: 400;
-  color: var(--text-mid);
-  line-height: 2;
-  border: none;
-  padding: 0;
-}
-
-.poetry-text p + p { margin-top: 28px; }
-
-.poetry-author {
-  margin-top: 28px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.9rem;
-  color: var(--text-soft);
-  letter-spacing: 0.08em;
-}
-
-/* ══════════════════════════════
-   INVITATION SECTION
-══════════════════════════════ */
-.invitation-section {
-  background: var(--bg);
-}
-
-.invitation-card {
-  background: var(--surface);
-  border-radius: var(--radius);
-  padding: 56px 40px;
-  box-shadow: var(--shadow-lg);
-  position: relative;
-  border: 1px solid var(--border);
-}
-
-/* Kazakh frame decorative */
-.kazakh-frame {
-  position: relative;
-  padding: 24px;
-}
-
-.kazakh-frame-corner {
-  position: absolute;
-  width: 48px;
-  height: 48px;
-  background-image: url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 4 L4 22 M4 4 L22 4' stroke='%23d4b483' stroke-width='1.5' fill='none'/%3E%3Ccircle cx='4' cy='4' r='3' fill='%23d4b483'/%3E%3Ccircle cx='12' cy='12' r='1.5' fill='%23d4b483' opacity='0.5'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-.kazakh-frame-corner--tl { top: 0; left: 0; }
-.kazakh-frame-corner--tr { top: 0; right: 0; transform: scaleX(-1); }
-.kazakh-frame-corner--bl { bottom: 0; left: 0; transform: scaleY(-1); }
-.kazakh-frame-corner--br { bottom: 0; right: 0; transform: scale(-1); }
-
-.invitation-inner { text-align: center; }
-
-.inv-greeting {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.85rem;
-  letter-spacing: 0.12em;
-  color: var(--text-soft);
-  text-transform: uppercase;
-  margin-bottom: 28px;
-}
-
-.inv-main {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.1rem, 3vw, 1.35rem);
-  color: var(--text-mid);
+  color: #000;
+  font-weight: 600;
+  line-height: 1.6;
   margin-bottom: 8px;
-}
-
-.inv-name {
-  font-family: 'EB Garamond', serif;
-  font-size: clamp(3rem, 10vw, 5rem);
-  font-style: italic;
-  color: var(--gold-dark);
-  font-weight: 700;
-  line-height: 1.1;
-  margin-bottom: 6px;
-  text-shadow: 0 2px 20px rgba(139, 107, 63, 0.2);
-  letter-spacing: 0.02em;
-}
-
-.inv-ceremony {
-  font-family: 'EB Garamond', serif;
-  font-size: clamp(1rem, 3vw, 1.3rem);
-  font-style: italic;
-  color: var(--text-mid);
-  letter-spacing: 0.06em;
-  margin-bottom: 24px;
-}
-
-.inv-body {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.05rem, 2.5vw, 1.25rem);
-  color: var(--text-mid);
-  line-height: 2;
-  margin-bottom: 32px;
 }
 
 .inv-signature {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 }
 
 .inv-signature p {
   font-family: 'Cormorant Garamond', serif;
   font-size: 0.9rem;
-  color: var(--text-soft);
+  color: #000;
+  font-weight: 600;
   letter-spacing: 0.08em;
-}
-
-/* ══════════════════════════════
-   DATE & COUNTDOWN
-══════════════════════════════ */
-.date-section {
-  background: var(--bg-alt);
-  position: relative;
-  overflow: hidden;
-}
-
-.date-section::before {
-  content: '';
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(212, 180, 131, 0.07) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.countdown-banner {
-  text-align: center;
-  margin-bottom: 48px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-
-.days-big {
-  font-family: 'EB Garamond', serif;
-  font-size: clamp(5rem, 20vw, 9rem);
-  font-weight: 700;
-  color: var(--gold-dark);
-  line-height: 1;
-  display: block;
-  text-shadow: 0 4px 30px rgba(139, 107, 63, 0.2);
-  transition: transform 0.3s ease;
-}
-
-.days-label {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--text-soft);
-}
-
-/* Calendar */
-.calendar-card {
-  background: var(--surface);
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--border);
-}
-
-.calendar-month {
-  background: linear-gradient(135deg, #2b1d0e 0%, #4a3018 100%);
-  padding: 28px 24px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-
-.cal-calligraphy {
-  font-family: 'EB Garamond', serif; font-style: italic;
-  font-size: 2.8rem;
-  color: var(--gold);
-  line-height: 1;
-}
-
-.cal-year {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.85rem;
-  letter-spacing: 0.3em;
-  color: rgba(212, 180, 131, 0.6);
-  text-transform: uppercase;
-}
-
-.calendar-grid-wrap {
-  padding: 24px 20px;
-}
-
-.calendar-weekdays {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 4px;
-  margin-bottom: 12px;
-}
-
-.calendar-weekdays span {
-  text-align: center;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-soft);
-  padding: 6px 0;
-  font-weight: 600;
-}
-
-.calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 4px;
-}
-
-.calendar-grid span {
-  text-align: center;
-  padding: 8px 4px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1rem;
-  color: var(--text-mid);
-  border-radius: 8px;
-  transition: background 0.2s;
-  line-height: 1.4;
-}
-
-.cal-empty { visibility: hidden; }
-
-.cal-highlight {
-  background: var(--gold-dark) !important;
-  color: #ffffff !important;
-  border-radius: 50% !important;
-  font-weight: 700 !important;
-  box-shadow: 0 4px 20px rgba(139, 107, 63, 0.45);
-  position: relative;
-}
-
-.cal-highlight::after {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  border: 1px dashed rgba(139, 107, 63, 0.4);
-}
-
-.calendar-footer {
-  border-top: 1px solid var(--border);
-  padding: 20px 24px;
-  background: rgba(248, 245, 240, 0.5);
-}
-
-.cal-info-row {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.cal-chip {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
-  border-radius: 50px;
-  padding: 8px 16px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.9rem;
-  letter-spacing: 0.05em;
-  color: var(--text-mid);
-}
-
-/* ══════════════════════════════
-   LOCATION
-══════════════════════════════ */
-.location-section { background: var(--bg); }
-
-.location-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 48px 40px;
-  text-align: center;
-  box-shadow: var(--shadow-md);
-  margin-bottom: 24px;
-}
-
-.location-icon-wrap {
-  width: 64px;
-  height: 64px;
-  background: var(--gold-pale);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 20px;
-  box-shadow: 0 4px 20px rgba(212, 180, 131, 0.25);
-}
-
-.location-name {
-  font-family: 'EB Garamond', serif;
-  font-size: clamp(1.3rem, 4vw, 1.8rem);
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 10px;
-  line-height: 1.3;
-}
-
-.location-address {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.05rem;
-  color: var(--text-soft);
-  margin-bottom: 32px;
-}
-
-.location-actions {
-  display: flex;
-  gap: 14px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.btn-gold {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 100%);
-  color: #ffffff;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1rem;
-  letter-spacing: 0.06em;
-  padding: 13px 28px;
-  border-radius: 50px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(139, 107, 63, 0.35);
-}
-
-.btn-gold:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(139, 107, 63, 0.45);
-}
-
-.btn-outline-gold {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: transparent;
-  color: var(--gold-dark);
-  border: 1.5px solid var(--gold);
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1rem;
-  letter-spacing: 0.06em;
-  padding: 12px 28px;
-  border-radius: 50px;
-  transition: all 0.3s ease;
-}
-
-.btn-outline-gold:hover {
-  background: var(--gold-pale);
-  transform: translateY(-2px);
-}
-
-/* Map placeholder */
-.map-placeholder {
-  background: var(--surface);
-  border: 1px dashed var(--border);
-  border-radius: var(--radius);
-  padding: 48px 24px;
-  text-align: center;
-}
-
-.map-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-
-.map-inner p {
-  font-family: 'EB Garamond', serif;
-  font-size: 1.2rem;
-  color: var(--text);
-  font-weight: 600;
-}
-
-.map-inner span {
-  font-family: 'Cormorant Garamond', serif;
-  color: var(--text-soft);
-  font-size: 0.95rem;
-}
-
-.map-link {
-  display: inline-block;
-  margin-top: 12px;
-  color: var(--gold-dark);
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.95rem;
-  letter-spacing: 0.06em;
-  border-bottom: 1px solid var(--gold);
-  padding-bottom: 2px;
-  transition: color 0.2s;
-}
-
-.map-link:hover { color: var(--gold); }
-
-/* ══════════════════════════════
-   PROGRAM TIMELINE
-══════════════════════════════ */
-.program-section {
-  background: var(--bg-alt);
-  position: relative;
-  overflow: hidden;
-}
-
-.program-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='40' cy='40' r='30' fill='none' stroke='%23d4b483' stroke-width='0.5' opacity='0.06'/%3E%3C/svg%3E");
-  background-size: 80px 80px;
-}
-
-.timeline {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  max-width: 560px;
-  margin: 0 auto;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 11px;
-  bottom: 11px;
-  width: 1px;
-  background: linear-gradient(to bottom, var(--gold-pale), var(--gold), var(--gold-pale));
-  transform: translateX(-50%);
-  z-index: 0;
-}
-
-.timeline-item {
-  display: grid;
-  grid-template-columns: 1fr 22px 1fr;
-  gap: 0 24px;
-  align-items: start;
-  position: relative;
-}
-
-.timeline-item:not(:last-child) { padding-bottom: 36px; }
-
-.timeline-time {
-  font-family: 'EB Garamond', serif;
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--gold-dark);
-  text-align: right;
-  padding-top: 0;
-  line-height: 22px;
-}
-
-.timeline-dot {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.timeline-content {
-  padding-top: 0;
-}
-
-.timeline-content h3 {
-  font-family: 'EB Garamond', serif;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 5px;
-  line-height: 22px;
-}
-
-.timeline-content p {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1rem;
-  color: var(--text-soft);
-  line-height: 1.5;
-}
-
-.timeline-content--highlight h3 { color: var(--gold-dark); }
-.timeline-content--highlight p  { color: var(--text-mid); }
-
-/* ══════════════════════════════
-   RSVP FORM
-══════════════════════════════ */
-.rsvp-section { background: var(--bg); }
-
-.rsvp-form {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-lg);
-  overflow: hidden;
-}
-
-.form-inner {
-  padding: 48px 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-}
-
-.form-group label {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.78rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--text-soft);
-  font-weight: 600;
-}
-
-input[type="text"],
-input[type="tel"],
-textarea {
-  background: var(--bg);
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 14px 18px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.05rem;
-  color: var(--text);
-  width: 100%;
-  transition: border-color 0.25s, box-shadow 0.25s;
-  outline: none;
-  resize: vertical;
-}
-
-input:focus, textarea:focus {
-  border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(212, 180, 131, 0.15);
-  background: var(--surface);
-}
-
-input::placeholder, textarea::placeholder {
-  color: var(--text-soft);
-  opacity: 0.6;
-}
-
-/* Radio cards */
-.attendance-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
-
-.radio-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  padding: 16px 10px;
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--bg);
-  cursor: pointer;
-  transition: all 0.25s ease;
-  text-align: center;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.95rem;
-  color: var(--text-mid);
-  line-height: 1.3;
-}
-
-.radio-card input { display: none; }
-
-.radio-icon {
-  font-size: 1.3rem;
-  color: var(--gold);
-  display: block;
-}
-
-.radio-card:hover {
-  border-color: var(--gold);
-  background: var(--gold-pale);
-}
-
-.radio-card:has(input:checked) {
-  border-color: var(--gold-dark);
-  background: var(--gold-pale);
-  color: var(--text);
-  font-weight: 600;
-  box-shadow: 0 4px 16px rgba(139, 107, 63, 0.18);
-}
-
-/* Submit button */
-.btn-submit {
-  background: linear-gradient(135deg, #2b1d0e 0%, #4a3018 50%, #2b1d0e 100%);
-  background-size: 200% 100%;
-  color: var(--gold);
-  border: none;
-  border-radius: var(--radius-sm);
-  padding: 17px 40px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  cursor: pointer;
-  width: 100%;
-  transition: all 0.4s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  box-shadow: 0 4px 20px rgba(43, 29, 14, 0.35);
-}
-
-.btn-submit:hover {
-  background-position: 100% 0;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(43, 29, 14, 0.45);
-}
-
-.btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-
-/* Spinner */
-.spinner {
-  display: none;
-  width: 18px;
-  height: 18px;
-  border: 2px solid rgba(212, 180, 131, 0.3);
-  border-top-color: var(--gold);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin { to { transform: rotate(360deg); } }
-
-.form-status {
-  text-align: center;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1rem;
-  min-height: 1.4em;
-  font-weight: 500;
-}
-
-/* ══════════════════════════════
-   FOOTER
-══════════════════════════════ */
-.footer {
-  background: #1a0f06;
-  padding: 64px 24px 48px;
-  text-align: center;
-  color: rgba(212, 180, 131, 0.7);
-}
-
-.footer-ornament { margin-bottom: 28px; }
-
-.footer-calligraphy {
-  font-family: 'EB Garamond', serif; font-style: italic;
-  font-size: clamp(2.2rem, 7vw, 3.5rem);
-  color: var(--gold);
-  font-weight: 400;
-  margin-bottom: 10px;
-  line-height: 1.1;
-}
-
-.footer-sub {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(212, 180, 131, 0.5);
-  margin-bottom: 36px;
 }
 
 .footer-contacts { margin-bottom: 36px; }
@@ -1203,7 +541,7 @@ input::placeholder, textarea::placeholder {
   gap: 10px;
   background: rgba(212, 180, 131, 0.12);
   border: 1px solid rgba(212, 180, 131, 0.3);
-  color: var(--gold);
+  color: #000;
   font-family: 'Cormorant Garamond', serif;
   font-size: 1rem;
   letter-spacing: 0.1em;
@@ -1218,11 +556,28 @@ input::placeholder, textarea::placeholder {
   box-shadow: 0 0 20px rgba(212, 180, 131, 0.15);
 }
 
+.footer-calligraphy {
+  font-family: 'EB Garamond', serif; font-style: italic;
+  font-size: 1.2rem;
+  color: #000;
+  margin-bottom: 4px;
+  line-height: 1.1;
+}
+
+.footer-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #000;
+  margin-bottom: 36px;
+}
+
 .footer-copy {
   font-family: 'Cormorant Garamond', serif;
   font-size: 0.8rem;
   letter-spacing: 0.15em;
-  color: rgba(212, 180, 131, 0.28);
+  color: #000;
 }
 
 /* ══════════════════════════════
