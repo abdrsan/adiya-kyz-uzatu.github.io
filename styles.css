@@ -357,8 +357,101 @@ a { text-decoration: none; color: inherit; }
   color: #000;
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.2rem;
-  letter-spacing: 0.05em;
-  white-space: nowrap;
+}
+
+/* ══════════════════════════════
+   HOSTS SECTION REDESIGN
+══════════════════════════════ */
+.hosts-section {
+  padding: 100px 0;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.hosts-card {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  padding: 60px 20px;
+  background: radial-gradient(circle at center, rgba(212,180,131,0.05) 0%, transparent 70%);
+}
+
+.hosts-ornament-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
+  animation: fadeInOrnament 1.5s ease-out forwards;
+}
+
+@keyframes fadeInOrnament {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.hosts-section-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 24px;
+  display: block;
+  opacity: 0.8;
+  font-weight: 600;
+}
+
+.hosts-names-wrapper {
+  margin: 15px 0;
+}
+
+.hosts-names-title {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(2.8rem, 10vw, 4.5rem);
+  color: var(--text);
+  line-height: 1.1;
+  margin: 0;
+  position: relative;
+  display: inline-block;
+  padding: 0 40px;
+  text-shadow: 0 2px 10px rgba(212,180,131,0.1);
+}
+
+.hosts-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.hosts-divider-line {
+  width: 60px;
+  height: 1.5px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  opacity: 0.6;
+}
+
+.hosts-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+}
+
+/* Background ornament pattern */
+.hosts-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 10 L65 35 L90 35 L70 45 L78 70 L60 55 L42 70 L50 45 L30 35 L55 35 Z' fill='%23d4b483' fill-opacity='0.03'/%3E%3C/svg%3E");
+  background-size: 120px 120px;
+  pointer-events: none;
+  z-index: -1;
 }
 
 .chip-dot {
